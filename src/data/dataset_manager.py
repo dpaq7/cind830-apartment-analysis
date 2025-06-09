@@ -23,12 +23,31 @@ class DatasetManager:
         if not self.data_path:
             raise ValueError("Data path must be provided")
         
+        # Try different encodings to handle various character sets
+        encodings_to_try = ['utf-8', 'latin-1', 'iso-8859-1', 'cp1252', 'utf-16']
+        
+        for encoding in encodings_to_try:
+            try:
+                print(f"Trying to load with {encoding} encoding...")
+                self.raw_data = pd.read_csv(self.data_path, sep=';', encoding=encoding)
+                print(f"✅ Successfully loaded {len(self.raw_data)} records with {encoding} encoding")
+                return self.raw_data
+            except UnicodeDecodeError:
+                print(f"❌ Failed with {encoding} encoding")
+                continue
+            except Exception as e:
+                print(f"❌ Error with {encoding} encoding: {str(e)}")
+                continue
+        
+        # If all encodings fail, try with error handling
         try:
-            self.raw_data = pd.read_csv(self.data_path, sep=';')
-            print(f"Successfully loaded {len(self.raw_data)} records")
+            print("Trying with error handling (replacing invalid characters)...")
+            self.raw_data = pd.read_csv(self.data_path, sep=';', encoding='utf-8', encoding_errors='replace')
+            print(f"✅ Successfully loaded {len(self.raw_data)} records with error replacement")
+            print("⚠️  Note: Some characters may have been replaced due to encoding issues")
             return self.raw_data
         except Exception as e:
-            raise Exception(f"Error loading data: {str(e)}")
+            raise Exception(f"Error loading data with all attempted encodings: {str(e)}")
     
     def clean_data(self) -> pd.DataFrame:
         if self.raw_data is None:
