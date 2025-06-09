@@ -64,24 +64,43 @@ A modular Python project for analyzing apartment rental classified data, demonst
 
 ## Installation
 
-1. Clone or download the project files
+1. Clone or download the project files:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/cind830-apartment-analysis.git
+   cd cind830-apartment-analysis
+   ```
+
 2. Install required dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
+3. **Download the dataset** using the provided script:
+   ```bash
+   python scripts/download_data.py
+   ```
+   
+   This script will:
+   - Automatically download the dataset from UCI ML Repository
+   - Save it as `apartments_for_rent_classified_100K.csv`
+   - Verify the dataset structure
+   
+   **Alternative**: If automatic download fails, the script provides manual download instructions.
+
 ## Usage
 
 ### Running the Analysis
 
-1. Open Jupyter Notebook:
+1. **Ensure dataset is downloaded** (see Installation step 3)
+
+2. Open Jupyter Notebook:
    ```bash
    jupyter notebook
    ```
 
-2. Navigate to `notebooks/apartment_analysis.ipynb`
+3. Navigate to `notebooks/apartment_analysis.ipynb`
 
-3. Run all cells to execute the complete analysis
+4. Run all cells to execute the complete analysis
 
 ### Using Individual Modules
 
