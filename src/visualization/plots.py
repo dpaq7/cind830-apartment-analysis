@@ -3,7 +3,12 @@ import seaborn as sns
 import numpy as np
 import pandas as pd
 from typing import List, Dict, Any, Optional, Tuple
-from ..models.apartment import Apartment
+
+# Handle both notebook and package imports
+try:
+    from ..models.apartment import Apartment
+except ImportError:
+    from models.apartment import Apartment
 
 
 class ApartmentVisualizer:

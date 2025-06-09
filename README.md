@@ -102,6 +102,31 @@ A modular Python project for analyzing apartment rental classified data, demonst
 
 4. Run all cells to execute the complete analysis
 
+### Troubleshooting Import Errors
+
+If you encounter import errors like `ImportError: attempted relative import beyond top-level package`, try these solutions:
+
+**Option 1: Use the standalone notebook**
+```bash
+# Use the alternative notebook designed for direct execution
+jupyter notebook notebooks/apartment_analysis_standalone.ipynb
+```
+
+**Option 2: Install in development mode**
+```bash
+# Install the package in development mode
+python setup_dev.py
+# OR manually:
+pip install -e .
+```
+
+**Option 3: Run from project root**
+```bash
+# Make sure you're in the project root directory when starting Jupyter
+cd /path/to/cind830-apartment-analysis
+jupyter notebook
+```
+
 ### Using Individual Modules
 
 ```python

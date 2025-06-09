@@ -1,7 +1,13 @@
 import numpy as np
 from typing import List, Dict, Any
-from .dataset_manager import DatasetManager
-from ..models.apartment import Apartment
+
+# Handle both notebook and package imports
+try:
+    from .dataset_manager import DatasetManager
+    from ..models.apartment import Apartment
+except ImportError:
+    from data.dataset_manager import DatasetManager
+    from models.apartment import Apartment
 
 
 class PriceAnalysis(DatasetManager):

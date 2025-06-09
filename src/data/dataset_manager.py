@@ -1,7 +1,12 @@
 import pandas as pd
 import numpy as np
 from typing import List, Optional
-from ..models.apartment import Apartment
+
+# Handle both notebook and package imports
+try:
+    from ..models.apartment import Apartment
+except ImportError:
+    from models.apartment import Apartment
 
 
 class DatasetManager:

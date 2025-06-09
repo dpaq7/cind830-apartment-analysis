@@ -1,6 +1,11 @@
 import time
 from typing import List, Any, Optional, Callable
-from ..models.apartment import Apartment
+
+# Handle both notebook and package imports
+try:
+    from ..models.apartment import Apartment
+except ImportError:
+    from models.apartment import Apartment
 
 
 class SearchAlgorithms:

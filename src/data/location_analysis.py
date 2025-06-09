@@ -1,8 +1,14 @@
 import numpy as np
 import math
 from typing import List, Dict, Tuple
-from .dataset_manager import DatasetManager
-from ..models.apartment import Apartment
+
+# Handle both notebook and package imports
+try:
+    from .dataset_manager import DatasetManager
+    from ..models.apartment import Apartment
+except ImportError:
+    from data.dataset_manager import DatasetManager
+    from models.apartment import Apartment
 
 
 class LocationAnalysis(DatasetManager):
